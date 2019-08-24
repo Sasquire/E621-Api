@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.config.js"
   },
   "author": "",
-  "license": "Undecided",
+  "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
     "mocha": "^6.2.0",
     "webpack": "^4.39.2",

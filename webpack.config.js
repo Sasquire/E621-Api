@@ -1,13 +1,27 @@
 const path = require('path');
+const webpack = require('webpack');
 const mode = ['development', 'production', 'none'][0];
 
 const dist_folder = path.resolve(__dirname, 'distribution');
-const entry = path.join(__dirname, 'source', 'download.js');
+const entry = path.join(__dirname, 'source', 'main.js');
+
+// This will replace the `__TARGET__` in imports with the proper type.
+// ie. `import foo from 'bar.__TARGET.js'`
+// becomes `import foo from 'bar.node.js'`
+function create_replacement(target){
+	return new webpack.NormalModuleReplacementPlugin(
+		/(.*)__TARGET__(.*)/u,
+		(resource) => {
+			resource.request = resource.request.replace(/__TARGET__/ug, target);
+		}
+	);
+}
 
 const node_config = {
 	target: 'node',
 	entry: entry,
 	mode: mode,
+	plugins: [create_replacement('node')],
 	output: {
 		path: dist_folder,
 		filename: 'e621_API.node.js'
@@ -18,6 +32,7 @@ const browser_config = {
 	target: 'web',
 	entry: entry,
 	mode: mode,
+	plugins: [create_replacement('browser')],
 	output: {
 		path: dist_folder,
 		filename: 'e621_API.browser.js'
@@ -28,6 +43,7 @@ const userscript_config = {
 	target: 'web',
 	entry: entry,
 	mode: mode,
+	plugins: [create_replacement('userscript')],
 	output: {
 		path: dist_folder,
 		filename: 'e621_API.userscript.js'
