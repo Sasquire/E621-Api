@@ -1,39 +1,42 @@
 {
-  "name": "e621_api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "mocha ./testing/test.node.js",
-    "build": "webpack --config webpack.config.js"
-  },
-  "author": "",
-  "license": "UNLICENSED",
-  "private": true,
-  "devDependencies": {
-    "mocha": "^6.2.0",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-node-externals": "^1.7.2"
-  },
-  "dependencies": {
-    "axios": "^0.19.0"
-  },
-  "eslintConfig": {
-	"extends": "eslint:recommended",
-    "parserOptions": {
-      "ecmaVersion": 8,
-      "sourceType": "module"
+	"name": "e621_api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"test": "mocha ./testing/test.node.js",
+		"build": "webpack --config webpack.config.js"
 	},
-	"env": {
-	  "browser": true,
-	  "node": true,
-	  "es6": true,
-	  "mocha": true
+	"author": "",
+	"license": "UNLICENSED",
+	"private": true,
+	"devDependencies": {
+		"mocha": "^6.2.0",
+		"webpack": "^4.39.2",
+		"webpack-cli": "^3.3.7",
+		"webpack-node-externals": "^1.7.2"
 	},
-    "rules": {
-	  "semi": "error",
-	  "no-console": "off"
-    }
-  }
+	"dependencies": {
+		"axios": "^0.19.0"
+	},
+	"eslintConfig": {
+		"extends": "standard",
+			"parserOptions": {
+			"ecmaVersion": 8,
+			"sourceType": "module"
+		},
+		"env": {
+			"browser": true,
+			"node": true,
+			"es6": true,
+			"mocha": true
+		},
+		"rules": {
+			"semi": ["error", "always"],
+			"no-console": "off",
+			"indent": ["error", "tab"],
+			"no-tabs": "off",
+			"camelcase": "off"
+		}
+	}
 }

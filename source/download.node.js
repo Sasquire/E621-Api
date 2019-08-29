@@ -11,7 +11,7 @@ import axios from 'axios';
 }
 
 */
-async function download(settings){
+async function download (settings) {
 	validate_settings(settings);
 	const request_options = build_request_options(settings);
 	return axios.request(request_options)
@@ -19,29 +19,29 @@ async function download(settings){
 		.catch(handle_error);
 }
 
-function validate_settings(settings){
-	if(['POST', 'GET'].includes(settings.method) == false){
+function validate_settings (settings) {
+	if (['POST', 'GET'].includes(settings.method) === false) {
 		throw new Error('method must be POST or GET');
 	}
 
-	if(typeof settings.path !== 'string'){
+	if (typeof settings.path !== 'string') {
 		throw new Error('path must be a string');
 	}
 
-	if(['JSON', 'XML', 'HTML'].includes(settings.response) == false){
+	if (['JSON', 'XML', 'HTML'].includes(settings.response) === false) {
 		throw new Error('response must be JSON or XML or HTML');
 	}
 
-	if(['URL', 'FORM', undefined].includes(settings.format) == false){
+	if (['URL', 'FORM', undefined].includes(settings.format) === false) {
 		throw new Error('format must be URL or FORM or undefined');
 	}
 
-	if(['object', 'undefined'].includes(typeof settings.data) == false){
+	if (['object', 'undefined'].includes(typeof settings.data) === false) {
 		throw new Error('data must be an object or undefined');
 	}
 }
 
-function build_request_options(settings){
+function build_request_options (settings) {
 	const request_options = {
 		baseURL: 'https://e621.net/',
 		url: `${settings.path}.${settings.response.toLowerCase()}`,
@@ -56,9 +56,9 @@ function build_request_options(settings){
 		}
 	};
 
-	if(settings.format === 'URL'){
+	if (settings.format === 'URL') {
 		request_options.params = settings.data;
-	} else if(settings.format === 'FORM'){
+	} else if (settings.format === 'FORM') {
 		request_options.data = settings.data;
 	} else {
 		// Format is undefined. Apply no settings
@@ -67,7 +67,7 @@ function build_request_options(settings){
 	return request_options;
 }
 
-function handle_error(error){
+function handle_error (error) {
 	// Todo
 	console.log(error);
 }

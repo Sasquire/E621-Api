@@ -9,7 +9,7 @@ const entry = path.join(__dirname, 'source', 'main.js');
 // This will replace the `__TARGET__` in imports with the proper type.
 // ie. `import foo from 'bar.__TARGET.js'`
 // becomes `import foo from 'bar.node.js'`
-function create_replacement(target){
+function create_replacement (target) {
 	return new webpack.NormalModuleReplacementPlugin(
 		/(.*)__TARGET__(.*)/u,
 		(resource) => {
