@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 const mode = ['development', 'production', 'none'][0];
 
 const dist_folder = path.resolve(__dirname, 'distribution');
@@ -22,9 +23,13 @@ const node_config = {
 	entry: entry,
 	mode: mode,
 	plugins: [create_replacement('node')],
+	externals: [nodeExternals()],
 	output: {
 		path: dist_folder,
-		filename: 'e621_API.node.js'
+		filename: 'e621_API.node.js',
+		library: 'E621API',
+		libraryTarget: 'commonjs2',
+		libraryExport: 'default'
 	}
 };
 
@@ -35,7 +40,10 @@ const browser_config = {
 	plugins: [create_replacement('browser')],
 	output: {
 		path: dist_folder,
-		filename: 'e621_API.browser.js'
+		filename: 'e621_API.browser.js',
+		library: 'E621API',
+		libraryTarget: 'assign',
+		libraryExport: 'default'
 	}
 };
 
@@ -46,7 +54,10 @@ const userscript_config = {
 	plugins: [create_replacement('userscript')],
 	output: {
 		path: dist_folder,
-		filename: 'e621_API.userscript.js'
+		filename: 'e621_API.userscript.js',
+		library: 'E621API',
+		libraryTarget: 'assign',
+		libraryExport: 'default'
 	}
 };
 

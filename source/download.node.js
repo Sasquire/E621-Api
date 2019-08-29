@@ -15,6 +15,7 @@ async function download(settings){
 	validate_settings(settings);
 	const request_options = build_request_options(settings);
 	return axios.request(request_options)
+		.then(response => response.data)
 		.catch(handle_error);
 }
 
@@ -35,7 +36,7 @@ function validate_settings(settings){
 		throw new Error('format must be URL or FORM or undefined');
 	}
 
-	if(['object', 'undefined'].includes(typeof data)){
+	if(['object', 'undefined'].includes(typeof settings.data) == false){
 		throw new Error('data must be an object or undefined');
 	}
 }
@@ -68,6 +69,7 @@ function build_request_options(settings){
 
 function handle_error(error){
 	// Todo
+	console.log(error);
 }
 
 export default download;
