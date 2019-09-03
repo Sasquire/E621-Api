@@ -12,8 +12,8 @@ import axios from 'axios';
 
 */
 async function download (settings) {
-	validate_settings(settings);
-	const request_options = build_request_options(settings);
+	validate_settings.bind(this)(settings);
+	const request_options = build_request_options.bind(this)(settings);
 	return axios.request(request_options)
 		.then(response => response.data)
 		.catch(handle_error);
@@ -39,6 +39,27 @@ function validate_settings (settings) {
 	if (['object', 'undefined'].includes(typeof settings.data) === false) {
 		throw new Error('data must be an object or undefined');
 	}
+
+	if (typeof this.useragent !== 'string') {
+		throw new Error('useragent must be a string');
+	}
+
+	if (settings.authenticate === true) {
+		// If authenticating, then both username and api_key must be present
+		if (typeof this.username !== 'string') {
+			throw new Error('useragent must be a string');
+		} else if (typeof this.api_key !== 'string') {
+			throw new Error('api_key must be a string');
+		}
+
+		if (settings.data === undefined) {
+			throw new Error('data can not be undefined if authenticating');
+		}
+
+		if (settings.format === undefined) {
+			throw new Error('format can not be undefined if authenticating');
+		}
+	}
 }
 
 function build_request_options (settings) {
@@ -52,9 +73,12 @@ function build_request_options (settings) {
 		// https://github.com/axios/axios/issues/667#issuecomment-335013993
 		responseType: settings.response === 'JSON' ? 'json' : 'text',
 		headers: {
-			'user-agent': settings.user_agent
+			'user-agent': this.useragent
 		}
 	};
+
+	settings.data.login = this.username;
+	settings.data.password_hash = this.api_key;
 
 	if (settings.format === 'URL') {
 		request_options.params = settings.data;
