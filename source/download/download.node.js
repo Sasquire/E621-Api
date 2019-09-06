@@ -1,3 +1,4 @@
+import validate_settings from './validate_settings.js';
 import axios from 'axios';
 
 /* Input to this method is structured like this
@@ -17,49 +18,6 @@ async function download (settings) {
 	return axios.request(request_options)
 		.then(response => response.data)
 		.catch(handle_error);
-}
-
-function validate_settings (settings) {
-	if (['POST', 'GET'].includes(settings.method) === false) {
-		throw new Error('method must be POST or GET');
-	}
-
-	if (typeof settings.path !== 'string') {
-		throw new Error('path must be a string');
-	}
-
-	if (['JSON', 'XML', 'HTML'].includes(settings.response) === false) {
-		throw new Error('response must be JSON or XML or HTML');
-	}
-
-	if (['URL', 'FORM', undefined].includes(settings.format) === false) {
-		throw new Error('format must be URL or FORM or undefined');
-	}
-
-	if (['object', 'undefined'].includes(typeof settings.data) === false) {
-		throw new Error('data must be an object or undefined');
-	}
-
-	if (typeof this.useragent !== 'string') {
-		throw new Error('useragent must be a string');
-	}
-
-	if (settings.authenticate === true) {
-		// If authenticating, then both username and api_key must be present
-		if (typeof this.username !== 'string') {
-			throw new Error('useragent must be a string');
-		} else if (typeof this.api_key !== 'string') {
-			throw new Error('api_key must be a string');
-		}
-
-		if (settings.data === undefined) {
-			throw new Error('data can not be undefined if authenticating');
-		}
-
-		if (settings.format === undefined) {
-			throw new Error('format can not be undefined if authenticating');
-		}
-	}
 }
 
 function build_request_options (settings) {

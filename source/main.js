@@ -1,4 +1,4 @@
-import download from './download.__TARGET__.js';
+import download from './download/download.__TARGET__.js';
 
 class E621API {
 	// Any of these can be anything, but errors will be thrown
