@@ -1,4 +1,8 @@
-import download from './download/download.__TARGET__.js';
+import {
+	raw_post_show,
+	raw_post_show_id,
+	raw_post_show_md5
+} from './post/raw_post_show.js';
 
 class E621API {
 	// Any of these can be anything, but errors will be thrown
@@ -10,6 +14,8 @@ class E621API {
 	}
 }
 
-E621API.prototype.raw_download = download;
+E621API.prototype.raw_post_show = raw_post_show;
+E621API.prototype.raw_post_show_id = raw_post_show_id;
+E621API.prototype.raw_post_show_md5 = raw_post_show_md5;
 
 export default E621API;

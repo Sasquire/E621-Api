@@ -6,6 +6,7 @@ const e621 = new E621API('api wrapper test');
 // To test a certain section
 // npm test -- --grep "Section"
 
+/*
 describe('Raw Download', () => {
 	it('works', () => assert.doesNotReject(() => e621.raw_download({
 		method: 'GET', // Defines how the request should be made
@@ -17,4 +18,15 @@ describe('Raw Download', () => {
 			id: 14
 		}
 	})));
+});
+*/
+
+describe('raw_post_show', () => {
+	it('post_id', () => assert.doesNotReject(() =>
+		e621.raw_post_show_id(14)
+	));
+
+	it('md5', () => assert.doesNotReject(() =>
+		e621.raw_post_show('3e47080200fbde2d7d2ccf419343ab0a')
+	));
 });

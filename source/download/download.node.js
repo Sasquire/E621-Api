@@ -35,8 +35,11 @@ function build_request_options (settings) {
 		}
 	};
 
-	settings.data.login = this.username;
-	settings.data.password_hash = this.api_key;
+	// settings.data is guaranteed to exist if authenticating
+	if (settings.authenticate) {
+		settings.data.login = this.username;
+		settings.data.password_hash = this.api_key;
+	}
 
 	if (settings.format === 'URL') {
 		request_options.params = settings.data;
@@ -52,6 +55,7 @@ function build_request_options (settings) {
 function handle_error (error) {
 	// Todo
 	console.log(error);
+	throw error;
 }
 
 export default download;
