@@ -61,8 +61,23 @@ const userscript_config = {
 	}
 };
 
+const validation_testing_config = {
+	target: 'node',
+	entry: './source/validation/validation.js',
+	mode: 'none',
+	plugins: [create_replacement('node')],
+	externals: [nodeExternals()],
+	output: {
+		path: dist_folder,
+		filename: 'validation.test.node.js',
+		library: 'validation',
+		libraryTarget: 'commonjs2'
+	}
+};
+
 module.exports = [
 	node_config,
 	browser_config,
-	userscript_config
+	userscript_config,
+	validation_testing_config
 ];

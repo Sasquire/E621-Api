@@ -1,4 +1,5 @@
 import download from './../download/download.__TARGET__.js';
+import { validate_md5, validate_post_id } from './../validation/validation.js';
 
 async function raw_post_show (settings) {
 	validate_settings(settings);
@@ -14,13 +15,13 @@ async function raw_post_show (settings) {
 }
 
 async function raw_post_show_id (post_id) {
-	return raw_post_show({
+	return raw_post_show.bind(this)({
 		post_id: post_id
 	});
 }
 
 async function raw_post_show_md5 (md5) {
-	return raw_post_show({
+	return raw_post_show.bind(this)({
 		md5: md5
 	});
 }
@@ -49,36 +50,10 @@ function validate_settings (settings) {
 
 	if (md5_exists) {
 		validate_md5(settings.md5);
-		// Validate md5
 	}
 
 	if (post_id_exists) {
 		validate_post_id(settings.post_id);
-	}
-}
-
-function validate_md5 (md5) {
-	if (typeof md5 !== 'string') {
-		throw new Error('md5 must be of type string');
-	}
-
-	if (md5.length !== 32) {
-		throw new Error('md5 must be of length 32');
-	}
-
-	const contains_non_hex = /[^0-9a-fA-F]/g;
-	if (contains_non_hex.test(md5)) {
-		throw new Error('md5 contains non-hexadecimal character');
-	}
-}
-
-function validate_post_id (post_id) {
-	if (Number.isInteger(post_id) === false) {
-		throw new Error('post_id must be an integer');
-	}
-
-	if (post_id < 0) {
-		throw new Error('post_id must be greater than zero');
 	}
 }
 
