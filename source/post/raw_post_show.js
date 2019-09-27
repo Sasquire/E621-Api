@@ -20,9 +20,9 @@ async function raw_post_show_id (post_id) {
 	});
 }
 
-async function raw_post_show_md5 (md5) {
+async function raw_post_show_md5 (post_md5) {
 	return raw_post_show.bind(this)({
-		md5: md5
+		md5: post_md5
 	});
 }
 
