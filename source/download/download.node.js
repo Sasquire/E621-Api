@@ -1,5 +1,6 @@
 import validate_settings from './validate_settings.js';
 import axios from 'axios';
+import FormData from 'form-data';
 
 /* Input to this method is structured like this
 {
@@ -46,7 +47,12 @@ function build_request_options (settings) {
 	if (settings.format === 'URL') {
 		request_options.params = settings.data;
 	} else if (settings.format === 'FORM') {
-		request_options.data = settings.data;
+		const form = new FormData();
+		Object.entries(settings.data).forEach(([key, value]) => {
+			form.append(key, value);
+		});
+		request_options.headers['content-type'] = form.getHeaders()['content-type'];
+		request_options.data = form;
 	} else {
 		// Format is undefined. Apply no settings
 	}

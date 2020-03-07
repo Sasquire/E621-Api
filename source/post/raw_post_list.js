@@ -1,6 +1,8 @@
 import download from './../download/download.__TARGET__.js';
 import { validate_string } from './../validation/validation.js';
 
+// There is an edge case where the data can be md5=<md5>
+
 async function raw_post_list (tag_search) {
 	validate_string(tag_search);
 
