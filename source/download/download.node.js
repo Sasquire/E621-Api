@@ -13,8 +13,8 @@ import axios from 'axios';
 
 */
 async function download (settings) {
-	validate_settings.bind(this)(settings);
-	const request_options = build_request_options.bind(this)(settings);
+	validate_settings.call(this, settings);
+	const request_options = build_request_options.call(this, settings);
 	return axios.request(request_options)
 		.then(response => response.data)
 		.catch(handle_error);

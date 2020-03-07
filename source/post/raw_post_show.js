@@ -4,7 +4,7 @@ import { validate_post_id } from './../validation/validation.js';
 async function raw_post_show (post_id) {
 	validate_post_id(post_id);
 
-	return download.bind(this)({
+	return download.call(this, {
 		method: 'GET',
 		path: `/posts/${post_id}`,
 		response: 'JSON',
