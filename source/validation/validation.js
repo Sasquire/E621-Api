@@ -27,7 +27,14 @@ function validate_post_id (post_id) {
 	}
 }
 
+function validate_string (string) {
+	if (typeof string !== 'string') {
+		throw new Error('string is not a string');
+	}
+}
+
 export {
 	validate_md5,
-	validate_post_id
+	validate_post_id,
+	validate_string
 };
