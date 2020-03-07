@@ -30,7 +30,8 @@ const node_config = {
 		library: 'E621API',
 		libraryTarget: 'commonjs2',
 		libraryExport: 'default'
-	}
+	},
+	devtool: 'inline-source-map'
 };
 
 const browser_config = {
@@ -58,7 +59,8 @@ const userscript_commonjs2_config = {
 		library: 'E621API',
 		libraryTarget: 'commonjs2',
 		libraryExport: 'default'
-	}
+	},
+	devtool: 'inline-source-map'
 };
 
 const userscript_config = {
@@ -72,7 +74,8 @@ const userscript_config = {
 		library: 'E621API',
 		libraryTarget: 'assign',
 		libraryExport: 'default'
-	}
+	},
+	devtool: 'inline-source-map'
 };
 
 const validation_testing_config = {
@@ -86,7 +89,8 @@ const validation_testing_config = {
 		filename: 'validation.test.node.js',
 		library: 'validation',
 		libraryTarget: 'commonjs2'
-	}
+	},
+	devtool: 'inline-source-map'
 };
 
 module.exports = [

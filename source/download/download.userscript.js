@@ -10,7 +10,7 @@
 
 */
 async function download (settings) {
-	const request_options = build_request_options.apply(this, settings);
+	const request_options = build_request_options.call(this, settings);
 
 	return new Promise((resolve, reject) => {
 		const on_load = (e) => {
@@ -74,3 +74,5 @@ function build_request_options (settings) {
 
 	return request_options;
 }
+
+export default download;
