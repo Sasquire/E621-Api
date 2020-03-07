@@ -47,6 +47,20 @@ const browser_config = {
 	}
 };
 
+const userscript_commonjs2_config = {
+	target: 'web',
+	entry: entry,
+	mode: mode,
+	plugins: [create_replacement('userscript')],
+	output: {
+		path: dist_folder,
+		filename: 'e621_API.commonjs2.userscript.js',
+		library: 'E621API',
+		libraryTarget: 'commonjs2',
+		libraryExport: 'default'
+	}
+};
+
 const userscript_config = {
 	target: 'web',
 	entry: entry,
@@ -79,5 +93,6 @@ module.exports = [
 	node_config,
 	browser_config,
 	userscript_config,
+	userscript_commonjs2_config,
 	validation_testing_config
 ];
