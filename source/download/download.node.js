@@ -37,8 +37,10 @@ function build_request_options (settings) {
 
 	// settings.data is guaranteed to exist if authenticating
 	if (settings.authenticate) {
-		settings.data.login = this.username;
-		settings.data.password_hash = this.api_key;
+		request_options.auth = {
+			username: this.username,
+			password: this.api_key
+		};
 	}
 
 	if (settings.format === 'URL') {

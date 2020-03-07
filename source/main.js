@@ -1,5 +1,6 @@
 import { raw_post_show } from './post/raw_post_show.js';
 import { raw_post_list } from './post/raw_post_list.js';
+import { raw_post_vote } from './post/raw_post_vote.js';
 
 class E621API {
 	// Any of these can be anything, but errors will be thrown
@@ -13,5 +14,6 @@ class E621API {
 
 E621API.prototype.raw_post_show = raw_post_show;
 E621API.prototype.raw_post_list = raw_post_list;
+E621API.prototype.raw_post_vote = raw_post_vote;
 
 export default E621API;

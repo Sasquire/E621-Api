@@ -8,7 +8,7 @@
 // api_key.
 
 function validate_settings (settings) {
-	if (['POST', 'GET'].includes(settings.method) === false) {
+	if (['POST', 'GET', 'PATCH'].includes(settings.method) === false) {
 		throw new Error('method must be POST or GET');
 	}
 

@@ -33,8 +33,15 @@ function validate_string (string) {
 	}
 }
 
+function validate_vote_option (vote) {
+	if (vote !== -1 && vote !== 0 && vote !== 1) {
+		throw new Error('vote is not of the values [-1, 0, 1]');
+	}
+}
+
 export {
 	validate_md5,
 	validate_post_id,
-	validate_string
+	validate_string,
+	validate_vote_option
 };
