@@ -9,7 +9,7 @@ async function raw_post_show (settings) {
 		path: `/posts/${settings.id}`,
 		response: 'JSON',
 
-		format: 'URL',
+		format: undefined,
 		data: null
 	}).catch(handle_error);
 }

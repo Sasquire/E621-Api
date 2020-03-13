@@ -5,7 +5,7 @@ import { validate_md5 } from './../../validation/validation.js';
 async function post_show_id (post_id) {
 	return raw_post_show.call(this, {
 		id: post_id
-	});
+	}).then(e => e.post);
 }
 
 async function post_show_md5 (md5) {
