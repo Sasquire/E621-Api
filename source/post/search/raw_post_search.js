@@ -1,5 +1,5 @@
-import download from './../download/download.__TARGET__.js';
-import { validate_string } from './../validation/validation.js';
+import download from './../../download/download.__TARGET__.js';
+import { validate_string } from './../../validation/validation.js';
 
 // There is an edge case where the data can be md5=<md5>
 

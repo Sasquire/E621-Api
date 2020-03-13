@@ -1,8 +1,10 @@
-import download from './../download/download.__TARGET__.js';
+import download from './../../download/download.__TARGET__.js';
 import {
 	validate_post_id,
 	validate_vote_option
-} from './../validation/validation.js';
+} from './../../validation/validation.js';
+
+// vote override option
 
 async function raw_post_vote (settings) {
 	validate_post_id(settings.post_id);

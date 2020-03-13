@@ -1,5 +1,5 @@
-import download from './../download/download.__TARGET__.js';
-import { validate_post_id } from './../validation/validation.js';
+import download from './../../download/download.__TARGET__.js';
+import { validate_post_id } from './../../validation/validation.js';
 
 // upload[tag_string] A space delimited list of tags.
 // upload[file] The file data encoded as a multipart form.
