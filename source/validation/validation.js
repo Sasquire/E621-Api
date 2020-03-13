@@ -27,9 +27,9 @@ function validate_counting_number (number, name) {
 	}
 }
 
-function validate_string (string) {
+function validate_string (string, name) {
 	if (typeof string !== 'string') {
-		throw new Error('string is not a string');
+		throw new Error(`${name} is not a string`);
 	}
 }
 
