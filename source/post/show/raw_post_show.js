@@ -1,20 +1,20 @@
 import download from './../../download/download.__TARGET__.js';
 import { validate_counting_number } from './../../validation/validation.js';
 
-async function raw_post_show (post_id) {
-	validate_counting_number(post_id, 'post_id');
+async function raw_post_show (settings) {
+	validate_counting_number(settings.id, 'post_id');
 
 	return download.call(this, {
 		method: 'GET',
-		path: `/posts/${post_id}`,
+		path: `/posts/${settings.id}`,
 		response: 'JSON',
 
 		format: 'URL',
 		data: null
-	}).catch(handle_post_show_error);
+	}).catch(handle_error);
 }
 
-function handle_post_show_error (error) {
+function handle_error (error) {
 	// Todo
 	console.log(error);
 	throw error;
