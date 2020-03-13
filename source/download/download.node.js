@@ -36,8 +36,8 @@ function build_request_options (settings) {
 		}
 	};
 
-	// settings.data is guaranteed to exist if authenticating
-	if (settings.authenticate) {
+	const has_credentials = (this.username != undefined && this.api_key != undefined);
+	if (settings.authenticate || has_credentials) {
 		request_options.auth = {
 			username: this.username,
 			password: this.api_key
