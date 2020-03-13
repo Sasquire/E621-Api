@@ -13,17 +13,17 @@ function validate_md5 (md5) {
 	}
 }
 
-function validate_post_id (post_id) {
-	if (typeof post_id !== 'number') {
-		throw new Error('post_id must be a number');
+function validate_counting_number (number, name) {
+	if (typeof number !== 'number') {
+		throw new Error(`${name} must be a number`);
 	}
 
-	if (Number.isInteger(post_id) === false) {
-		throw new Error('post_id must be an integer');
+	if (Number.isInteger(number) === false) {
+		throw new Error(`${name}must be an integer`);
 	}
 
-	if (post_id < 0) {
-		throw new Error('post_id must be greater than zero');
+	if (number < 0) {
+		throw new Error(`${name} must be greater than zero`);
 	}
 }
 
@@ -41,7 +41,7 @@ function validate_vote_option (vote) {
 
 export {
 	validate_md5,
-	validate_post_id,
+	validate_counting_number,
 	validate_string,
 	validate_vote_option
 };

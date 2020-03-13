@@ -1,5 +1,5 @@
 import download from './../../download/download.__TARGET__.js';
-import { validate_post_id } from './../../validation/validation.js';
+import { validate_counting_number } from './../../validation/validation.js';
 
 // upload[tag_string] A space delimited list of tags.
 // upload[file] The file data encoded as a multipart form.
@@ -104,7 +104,7 @@ function validate_settings (settings) {
 	} else if (settings['upload[parent_id]'] === null) {
 		// It is fine if parent_id is null
 	} else {
-		validate_post_id(settings['upload[parent_id]']);
+		validate_counting_number(settings['upload[parent_id]'], 'upload[parent_id]');
 	}
 }
 

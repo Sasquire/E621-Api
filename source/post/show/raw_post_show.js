@@ -1,8 +1,8 @@
 import download from './../../download/download.__TARGET__.js';
-import { validate_post_id } from './../../validation/validation.js';
+import { validate_counting_number } from './../../validation/validation.js';
 
 async function raw_post_show (post_id) {
-	validate_post_id(post_id);
+	validate_counting_number(post_id, 'post_id');
 
 	return download.call(this, {
 		method: 'GET',
