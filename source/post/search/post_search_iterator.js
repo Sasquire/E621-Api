@@ -10,10 +10,10 @@ async function* post_search_iterator (search_string) {
 	let max_id = 1e9;
 	while (true) {
 		// https://github.com/zwagoth/e621ng/issues/202
-		const amended_search = `${search_string} id:<${max_id}`;
 		const { posts } = await raw_post_search.call(this, {
-			tags: amended_search,
-			limit: posts_per_page
+			tags: search_string,
+			limit: posts_per_page,
+			page: `b${max_id}`
 		}).catch(handle_error);
 
 		yield* posts;

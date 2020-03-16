@@ -53,7 +53,9 @@
 				}
 			],
 			"no-tabs": "off",
-			"camelcase": "off"
+			"camelcase": "off",
+			"generator-star-spacing": "off",
+			"yield-star-spacing": "off"
 		}
 	}
 }

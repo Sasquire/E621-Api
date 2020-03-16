@@ -39,9 +39,18 @@ function validate_vote_option (vote) {
 	}
 }
 
+function validate_page_string (string, name) {
+	validate_string(string, name);
+
+	if ((/[ab]?\d+/).test(string) === false) {
+		throw new Error(`${name} does not match the format /[ab]?\\d+/`);
+	}
+}
+
 export {
 	validate_md5,
 	validate_counting_number,
 	validate_string,
-	validate_vote_option
+	validate_vote_option,
+	validate_page_string
 };
