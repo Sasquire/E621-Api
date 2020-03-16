@@ -36,7 +36,7 @@ function build_request_options (settings) {
 		}
 	};
 
-	const has_credentials = (this.username != undefined && this.api_key != undefined);
+	const has_credentials = (this.username !== undefined && this.api_key !== undefined);
 	if (settings.authenticate || has_credentials) {
 		request_options.auth = {
 			username: this.username,
@@ -49,7 +49,14 @@ function build_request_options (settings) {
 	} else if (settings.format === 'FORM') {
 		const form = new FormData();
 		Object.entries(settings.data).forEach(([key, value]) => {
-			form.append(key, value);
+			if (value.constructor === ArrayBuffer) {
+				form.append(key, Buffer.from(value), {
+					filename: 'upload.image',
+					contentType: 'application/octet-stream'
+				});
+			} else {
+				form.append(key, value);
+			}
 		});
 		request_options.headers['content-type'] = form.getHeaders()['content-type'];
 		request_options.data = form;

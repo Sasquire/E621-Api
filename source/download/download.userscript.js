@@ -54,7 +54,7 @@ function build_request_options (settings) {
 		}
 	};
 
-	const has_credentials = (this.username != undefined && this.api_key != undefined);
+	const has_credentials = (this.username !== undefined && this.api_key !== undefined);
 	if (settings.authenticate || has_credentials) {
 		const key = `Basic ${btoa(`${this.username}:${this.api_key}`)}`;
 		request_options.headers.Authorization = key;
