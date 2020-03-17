@@ -8,7 +8,7 @@
 // api_key.
 
 function validate_settings (settings) {
-	if (['POST', 'GET', 'PATCH'].includes(settings.method) === false) {
+	if (['POST', 'GET', 'PATCH', 'DELETE'].includes(settings.method) === false) {
 		throw new Error('method must be POST or GET');
 	}
 
@@ -38,14 +38,6 @@ function validate_settings (settings) {
 			throw new Error('useragent must be a string');
 		} else if (typeof this.api_key !== 'string') {
 			throw new Error('api_key must be a string');
-		}
-
-		if (settings.data === undefined) {
-			throw new Error('data can not be undefined if authenticating');
-		}
-
-		if (settings.format === undefined) {
-			throw new Error('format can not be undefined if authenticating');
 		}
 	}
 }

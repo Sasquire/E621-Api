@@ -5,8 +5,6 @@ import {
 	validate_boolean
 } from './../../validation/validation.js';
 
-// vote override option
-
 async function raw_post_vote (settings) {
 	validate_settings(settings);
 
@@ -21,6 +19,18 @@ async function raw_post_vote (settings) {
 	}).catch(handle_error);
 }
 
+async function post_vote_remove (post_id) {
+	return download.call(this, {
+		method: 'DELETE',
+		path: `/posts/${post_id}/votes`,
+		response: 'JSON',
+
+		format: undefined,
+		data: undefined,
+		authenticate: true
+	}).catch(handle_error);
+}
+
 function handle_error (error) {
 	// Todo
 	console.log(error);
@@ -29,7 +39,7 @@ function handle_error (error) {
 
 function validate_settings (settings) {
 	validate_counting_number(settings.post_id, 'post_id');
-	validate_vote_option(settings.vote);
+	validate_vote_option(settings.score);
 
 	if (settings.no_unvote !== null) {
 		validate_boolean(settings.no_unvote, 'no_unvote');
@@ -44,6 +54,11 @@ function make_data (settings) {
 	if (settings.no_unvote !== null) {
 		return_object.no_unvote = settings.no_unvote;
 	}
+
+	return return_object;
 }
 
-export { raw_post_vote };
+export {
+	raw_post_vote,
+	post_vote_remove
+};

@@ -34,8 +34,8 @@ function validate_string (string, name) {
 }
 
 function validate_vote_option (vote) {
-	if (vote !== -1 && vote !== 1) {
-		throw new Error('vote is not of the values [-1, 0, 1]');
+	if (vote !== -1 && vote !== 0 && vote !== 1) {
+		throw new Error('vote is not of the values [-1, 1]');
 	}
 }
 
