@@ -10,7 +10,7 @@ async function raw_post_vote (settings) {
 
 	return download.call(this, {
 		method: 'POST',
-		path: `/posts/${settings.post_id}/votes`,
+		path: `/posts/${settings.id}/votes`,
 		response: 'JSON',
 
 		format: 'URL',
@@ -19,10 +19,10 @@ async function raw_post_vote (settings) {
 	}).catch(handle_error);
 }
 
-async function post_vote_remove (post_id) {
+async function post_vote_remove (id) {
 	return download.call(this, {
 		method: 'DELETE',
-		path: `/posts/${post_id}/votes`,
+		path: `/posts/${id}/votes`,
 		response: 'JSON',
 
 		format: undefined,
@@ -38,7 +38,7 @@ function handle_error (error) {
 }
 
 function validate_settings (settings) {
-	validate_counting_number(settings.post_id, 'post_id');
+	validate_counting_number(settings.id, 'post_id');
 	validate_vote_option(settings.score);
 
 	if (settings.no_unvote !== null) {
