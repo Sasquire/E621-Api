@@ -21,6 +21,8 @@ import {
 import { raw_post_create } from './post/create/raw_post_create.js';
 import { post_create } from './post/create/post_create.js';
 
+import { raw_post_update } from './post/update/raw_post_update.js';
+
 class E621API {
 	// Any of these can be anything, but errors will be thrown
 	// when any requests are trying to be made.
@@ -47,5 +49,7 @@ E621API.prototype.post_vote_remove = post_vote_remove;
 
 E621API.prototype.raw_post_create = raw_post_create;
 E621API.prototype.post_create = post_create;
+
+E621API.prototype.raw_post_update = raw_post_update;
 
 export default E621API;
