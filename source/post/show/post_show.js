@@ -1,4 +1,4 @@
-import { raw_post_search } from './../search/raw_post_search.js';
+import { raw_post_search } from './../index/raw_post_search.js';
 import { raw_post_show } from './raw_post_show.js';
 import { validate_md5 } from './../../validation/validation.js';
 

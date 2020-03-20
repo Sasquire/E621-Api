@@ -5,9 +5,9 @@ import {
 	post_show
 } from './post/show/post_show.js';
 
-import { raw_post_search } from './post/search/raw_post_search.js';
-import { post_search } from './post/search/post_search.js';
-import { post_search_iterator } from './post/search/post_search_iterator.js';
+import { raw_post_search } from './post/index/raw_post_search.js';
+import { post_search } from './post/index/post_search.js';
+import { post_search_iterator } from './post/index/post_search_iterator.js';
 
 import {
 	raw_post_vote,
