@@ -24,6 +24,8 @@ import { post_create } from './post/create/post_create.js';
 import { raw_post_update } from './post/update/raw_post_update.js';
 import { post_update } from './post/update/post_update.js';
 
+import { raw_post_flag_create } from './post_flag/create/raw_post_flag_create.js';
+
 class E621API {
 	// Any of these can be anything, but errors will be thrown
 	// when any requests are trying to be made.
@@ -33,6 +35,8 @@ class E621API {
 		this.api_key = api_key;
 	}
 }
+
+E621API.prototype.version = '1.00100';
 
 E621API.prototype.raw_post_show = raw_post_show;
 E621API.prototype.post_show_id = post_show_id;
@@ -53,5 +57,7 @@ E621API.prototype.post_create = post_create;
 
 E621API.prototype.raw_post_update = raw_post_update;
 E621API.prototype.post_update = post_update;
+
+E621API.prototype.raw_post_flag_create = raw_post_flag_create;
 
 export default E621API;
