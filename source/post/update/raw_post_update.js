@@ -30,7 +30,6 @@ function validate_settings (settings) {
 		'post[old_tag_string]',
 		'post[source_diff]',
 		'post[source]',
-		'post[source_diff]',
 		'post[old_source]',
 		'post[description]',
 		'post[old_description]',
