@@ -25,6 +25,10 @@ import { raw_post_update } from './post/update/raw_post_update.js';
 import { post_update } from './post/update/post_update.js';
 
 import { raw_post_flag_create } from './post_flag/create/raw_post_flag_create.js';
+import {
+	post_flag_create,
+	post_flag_reasons
+} from './post_flag/create/post_flag_create.js';
 
 class E621API {
 	// Any of these can be anything, but errors will be thrown
@@ -59,5 +63,7 @@ E621API.prototype.raw_post_update = raw_post_update;
 E621API.prototype.post_update = post_update;
 
 E621API.prototype.raw_post_flag_create = raw_post_flag_create;
+E621API.prototype.post_flag_create = post_flag_create;
+E621API.prototype.post_flag_reasons = post_flag_reasons;
 
 export default E621API;
