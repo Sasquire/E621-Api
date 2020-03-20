@@ -24,6 +24,9 @@ import { post_create } from './post/create/post_create.js';
 import { raw_post_update } from './post/update/raw_post_update.js';
 import { post_update } from './post/update/post_update.js';
 
+import { raw_post_copy_notes } from './post/copy_notes/raw_post_copy_notes.js';
+import { post_copy_notes } from './post/copy_notes/post_copy_notes.js';
+
 import { raw_post_flag_create } from './post_flag/create/raw_post_flag_create.js';
 import {
 	post_flag_create,
@@ -61,6 +64,9 @@ E621API.prototype.post_create = post_create;
 
 E621API.prototype.raw_post_update = raw_post_update;
 E621API.prototype.post_update = post_update;
+
+E621API.prototype.raw_post_copy_notes = raw_post_copy_notes;
+E621API.prototype.post_copy_notes = post_copy_notes;
 
 E621API.prototype.raw_post_flag_create = raw_post_flag_create;
 E621API.prototype.post_flag_create = post_flag_create;
