@@ -1,8 +1,6 @@
 import download from './../../download/download.__TARGET__.js';
 import { validate_counting_number } from './../../validation/validation.js';
 
-// There is an edge case where the data can be md5=<md5>
-
 async function raw_post_copy_notes (settings) {
 	validate_settings(settings);
 
