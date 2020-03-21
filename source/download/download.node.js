@@ -68,8 +68,7 @@ function build_request_options (settings) {
 }
 
 function handle_error (error) {
-	// Todo
-	console.log(error);
+	// TODO
 	throw error;
 }
 

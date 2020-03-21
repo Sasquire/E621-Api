@@ -34,7 +34,9 @@ import {
 } from './post_flag/create/post_flag_create.js';
 
 import { raw_comment_create } from './comment/create/raw_comment_create.js';
-import { comment_create } from'./comment/create/comment_create.js';
+import { comment_create } from './comment/create/comment_create.js';
+
+import { post_bvas } from './post/bvas/post_bvas.js';
 
 class E621API {
 	// Any of these can be anything, but errors will be thrown
@@ -77,5 +79,7 @@ E621API.prototype.post_flag_reasons = post_flag_reasons;
 
 E621API.prototype.raw_comment_create = raw_comment_create;
 E621API.prototype.comment_create = comment_create;
+
+E621API.prototype.post_bvas = post_bvas;
 
 export default E621API;

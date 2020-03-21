@@ -8,8 +8,8 @@
 // api_key.
 
 function validate_settings (settings) {
-	if (['POST', 'GET', 'PATCH', 'DELETE'].includes(settings.method) === false) {
-		throw new Error('method must be POST or GET');
+	if (['POST', 'GET', 'PATCH', 'DELETE', 'PUT'].includes(settings.method) === false) {
+		throw new Error('method must be one of [\'POST\', \'GET\', \'PATCH\', \'DELETE\', \'PUT\']');
 	}
 
 	if (typeof settings.path !== 'string') {

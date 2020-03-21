@@ -18,9 +18,13 @@ async function raw_post_copy_notes (settings) {
 }
 
 function handle_error (error) {
-	// Todo
-	console.log(error);
-	throw error;
+	if (error.response.data.reason === 'Post has no notes') {
+		return null; // Expected behavior is to have no errors thrown if post has no notes
+	} else {
+		// Todo
+		console.log(error);
+		throw error;
+	}
 }
 
 function validate_settings (settings) {
