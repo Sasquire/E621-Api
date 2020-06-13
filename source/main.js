@@ -38,6 +38,9 @@ import { comment_create } from './comment/create/comment_create.js';
 
 import { post_bvas } from './post/bvas/post_bvas.js';
 
+import { raw_blip_create } from './blip/create/raw_blip_create.js';
+import { blip_create } from './blip/create/blip_create.js';
+
 class E621API {
 	// Any of these can be anything, but errors will be thrown
 	// when any requests are trying to be made.
@@ -81,5 +84,8 @@ E621API.prototype.raw_comment_create = raw_comment_create;
 E621API.prototype.comment_create = comment_create;
 
 E621API.prototype.post_bvas = post_bvas;
+
+E621API.prototype.raw_blip_create = raw_blip_create;
+E621API.prototype.blip_create = blip_create;
 
 export default E621API;

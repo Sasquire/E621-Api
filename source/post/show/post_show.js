@@ -12,7 +12,8 @@ async function post_show_md5 (md5) {
 	validate_md5(md5);
 	return raw_post_search.call(this, {
 		tags: `md5:${md5}`,
-		limit: 1
+		limit: 1,
+		page: null
 	}).then(e => {
 		if (e.posts.length === 0) {
 			return null;

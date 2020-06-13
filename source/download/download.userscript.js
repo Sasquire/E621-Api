@@ -14,15 +14,15 @@ async function download (settings) {
 
 	return new Promise((resolve, reject) => {
 		const on_load = (e) => {
-			if (e.status === 200) {
+			if (e.status >= 200 && e.status <= 299) {
 				resolve(e.response); // This will likely cause errors later
 			} else {
 				// eslint-disable-next-line prefer-promise-reject-errors
 				reject({
 					response: {
-						status: e.status
-					},
-					data: e
+						status: e.status,
+						data: e.response
+					}
 				});
 			}
 		};
