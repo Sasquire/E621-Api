@@ -14,7 +14,7 @@ const post_flag_reasons = {
 
 async function post_flag_create (reason, post_id, extra) {
 	if (post_flag_reasons[reason] === undefined) {
-		throw new Error(`reason must be one of [${Object.keys(post_flag_reasons).join(', ')}]`);
+		throw new Error(`Reason must be one of [${Object.keys(post_flag_reasons).join(', ')}]`);
 	}
 
 	const data = {

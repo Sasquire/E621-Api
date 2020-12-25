@@ -41,6 +41,10 @@ import { post_bvas } from './post/bvas/post_bvas.js';
 import { raw_blip_create } from './blip/create/raw_blip_create.js';
 import { blip_create } from './blip/create/blip_create.js';
 
+import { raw_tag_search } from './tags/index/raw_tag_search.js';
+import { tag_search } from './tags/index/tag_search.js';
+import { tag_search_iterator } from './tags/index/tag_search_iterator.js';
+
 class E621API {
 	// Any of these can be anything, but errors will be thrown
 	// when any requests are trying to be made.
@@ -87,5 +91,9 @@ E621API.prototype.post_bvas = post_bvas;
 
 E621API.prototype.raw_blip_create = raw_blip_create;
 E621API.prototype.blip_create = blip_create;
+
+E621API.prototype.raw_tag_search = raw_tag_search;
+E621API.prototype.tag_search = tag_search;
+E621API.prototype.tag_search_iterator = tag_search_iterator;
 
 export default E621API;

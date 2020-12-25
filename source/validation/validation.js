@@ -53,11 +53,18 @@ function validate_boolean (boolean, name) {
 	}
 }
 
+function validate_from_list (value, list, name) {
+	if (list.some(e => e === value) === false) {
+		throw new Error(`Value ${value} not in list [${list.join(', ')}] for ${name}`);
+	}
+}
+
 export {
 	validate_md5,
 	validate_counting_number,
 	validate_string,
 	validate_vote_option,
 	validate_page_string,
-	validate_boolean
+	validate_boolean,
+	validate_from_list
 };
